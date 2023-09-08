@@ -1,4 +1,4 @@
-package com.adan.security.demo;
+package com.adan.security.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
