@@ -10,11 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -38,9 +38,14 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<ProductResponse> getAllTheProducts() {
+    public ResponseEntity<?> getAllTheProducts() {
         List<ProductResponse> productResponses = productService.getAllProductResponses();
-        return productResponses;
+
+        if (productResponses.isEmpty()) {
+            return ResponseEntity.ok("No products available.");
+        } else {
+            return ResponseEntity.ok(productResponses);
+        }
     }
 
     @PutMapping("/update/{productId}")
@@ -52,13 +57,12 @@ public class ProductController {
         if (existingProduct == null) {
             return ResponseEntity.notFound().build();
         }
+
         existingProduct.setName(productRequest.getName());
         existingProduct.setQty(productRequest.getQty());
         existingProduct.setPrice(productRequest.getPrice());
-
         productService.updateProduct(existingProduct);
-
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Product updated successfully.");
     }
 
 
@@ -71,9 +75,9 @@ public class ProductController {
         }
 
         productService.deleteProduct(productId);
-
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Product with ID " + productId + " deleted successfully.");
     }
+
 
 
     @GetMapping("/get/{productId}")
@@ -81,21 +85,15 @@ public class ProductController {
         Product existingProduct = productService.getProductById(productId);
 
         if (existingProduct == null) {
-            String errorMessage = "Product not found with ID: " + productId;
-            return ResponseEntity.notFound().build();
+            String errorMessage = "Product with ID " + productId + " is not available.";
+            return ResponseEntity.ok(errorMessage);
         }
         ProductResponse productResponse = new ProductResponse();
         productResponse.setProductId(existingProduct.getProductId());
         productResponse.setName(existingProduct.getName());
         productResponse.setQty(existingProduct.getQty());
         productResponse.setPrice(existingProduct.getPrice());
-
         return ResponseEntity.ok(productResponse);
     }
-
-
-
-
-
 
 }
