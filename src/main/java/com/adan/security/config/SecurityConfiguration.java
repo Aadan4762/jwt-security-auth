@@ -29,6 +29,7 @@ public class SecurityConfiguration {
         .authorizeHttpRequests()
         .requestMatchers("/api/v1/authentication/**").permitAll()
             .requestMatchers("/api/v1/products/create").permitAll()
+            .requestMatchers("/api/v2/manufacturers/create").permitAll()
         .anyRequest().authenticated()
         .and()
           .sessionManagement()
