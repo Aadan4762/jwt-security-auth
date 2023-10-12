@@ -26,7 +26,6 @@ public class JwtService {
   private long refreshExpiration;
 
 
- // private static final String SECRET_KEY = "6251655468576D5A7134743777217A25432A462D4A614E635266556A586E3272";
 
   public String extractUsername(String token) {
     return extractClaim(token, Claims::getSubject);

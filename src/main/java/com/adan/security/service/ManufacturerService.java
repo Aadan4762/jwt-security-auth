@@ -44,14 +44,10 @@ public class ManufacturerService {
         Manufacturer existingManufacturer = manufacturerRepository.findById(updatedManufacturer.getId()).orElse(null);
 
         if (existingManufacturer != null) {
-            // Update the existing product's fields with the new data
             existingManufacturer.setName(updatedManufacturer.getName());
             existingManufacturer.setLocation(updatedManufacturer.getLocation());
-            // Save and return the updated product
             return manufacturerRepository.save(existingManufacturer);
         }
-
-        // If the product does not exist, return null or throw an exception as needed
         return null;
     }
 

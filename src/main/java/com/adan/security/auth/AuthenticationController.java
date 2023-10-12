@@ -18,8 +18,6 @@ public class AuthenticationController {
 
   private final AuthenticationService authenticationService;
 
-  //Register method, used to register our user by passing user register request credentials.
-
   @PostMapping("/register")
   public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest registerRequest) {
     return ResponseEntity.ok(authenticationService.register(registerRequest));
