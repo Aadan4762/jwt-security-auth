@@ -1,5 +1,9 @@
-package com.adan.security.auth;
+package com.adan.security.controller;
 
+import com.adan.security.auth.AuthenticationRequest;
+import com.adan.security.auth.AuthenticationResponse;
+import com.adan.security.auth.AuthenticationService;
+import com.adan.security.auth.RegisterRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
