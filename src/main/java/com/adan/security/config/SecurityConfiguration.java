@@ -33,7 +33,7 @@ public class SecurityConfiguration {
             .disable()
             .authorizeHttpRequests()
             // Permit access to authentication endpoints
-            .requestMatchers("/api/v1/authentication/**").permitAll()
+            .requestMatchers("/api/v3/authentication/**").permitAll()
             // Permit access to product creation endpoint
             .requestMatchers("/api/v1/products/create").permitAll()
             // Permit access to manufacturer endpoints

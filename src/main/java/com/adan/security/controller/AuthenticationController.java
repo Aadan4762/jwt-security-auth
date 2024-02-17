@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/v1/authentication")
+@RequestMapping("/api/v3/authentication")
 @RequiredArgsConstructor
 public class AuthenticationController {
 

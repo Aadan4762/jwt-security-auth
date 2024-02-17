@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 @RequiredArgsConstructor
-public class ManufacturerService {
+public class ManufacturerService implements ManufacturerServiceInterface {
 
     // Dependency injection of ManufacturerRepository
     private final ManufacturerRepository manufacturerRepository;
